@@ -1,0 +1,301 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/maxogden/wzrd">wzrd (v1.5.0)</a>
+</h1>
+<h4>Super minimal browserify development server. Inspired by [beefy](http://npmjs.org/beefy) but with less magic</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.wzrd">module wzrd</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.wzrd.browserify">
+            function <span class="apidocSignatureSpan">wzrd.</span>browserify
+            <span class="apidocSignatureSpan">(entry, opts, req, res)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.wzrd.generateIndex">
+            function <span class="apidocSignatureSpan">wzrd.</span>generateIndex
+            <span class="apidocSignatureSpan">(entry, req, res)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.wzrd.http">
+            function <span class="apidocSignatureSpan">wzrd.</span>http
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.wzrd.https">
+            function <span class="apidocSignatureSpan">wzrd.</span>https
+            <span class="apidocSignatureSpan">(opts, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.wzrd.static">
+            function <span class="apidocSignatureSpan">wzrd.</span>static
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.wzrd" id="apidoc.module.wzrd">module wzrd</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.wzrd.browserify" id="apidoc.element.wzrd.browserify">
+        function <span class="apidocSignatureSpan">wzrd.</span>browserify
+        <span class="apidocSignatureSpan">(entry, opts, req, res)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">browserify = function (entry, opts, req, res) {
+  res.setHeader('content-type', 'text/javascript')
+  var cmd = ['browserify', entry]
+  if (opts.browserifyArgs) cmd = cmd.concat(opts.browserifyArgs)
+  cmd = cmd.join(' ')
+  var proc = spawn(cmd)
+  var start = Date.now()
+  proc.stderr.pipe(concat(function error (err) {
+    if (!err.length) return
+    endLog()
+    process.stderr.write(err.toString())
+    res.statusCode = 500
+    res.end()
+  }))
+  proc.stdout.pipe(concat(function done (buff) {
+    if (!buff.length) return
+    endLog()
+    res.end(buff)
+  }))
+  function endLog () {
+    console.log(JSON.stringify({url: req.url, type: 'bundle', command: cmd, elapsed: (Date.now() - start) + 'ms', time: new Date
+()}))
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      module.exports.generateIndex(firstEntry, req, res)
+    }
+  })
+}
+
+opts.entries.forEach(function (entry) {
+  router.addRoute('/' + entry.to, function (req, res, params) {
+    module.exports.<span class="apidocCodeKeywordSpan">browserify</span>(entry.from, opts, req, res)
+  })
+})
+
+router.addRoute('/', indexHtmlHandler)
+
+router.addRoute('*', function (req, res, params) {
+  console.log(JSON.stringify({url: req.url, type: 'static', time: new Date()}))
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.wzrd.generateIndex" id="apidoc.element.wzrd.generateIndex">
+        function <span class="apidocSignatureSpan">wzrd.</span>generateIndex
+        <span class="apidocSignatureSpan">(entry, req, res)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateIndex = function (entry, req, res) {
+  console.log(JSON.stringify({url: req.url, type: 'generated', time: new Date()}))
+  res.setHeader('content-type', 'text/html')
+  res.end('&lt;!doctype html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;/head&gt;&lt;body&gt;&lt;script src="' + entry + '"&gt;&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;')
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var indexHtmlHandler = function (req, res, params) {
+  fs.exists(path.join(basedir, 'index.html'), function (exists) {
+    var firstEntry = opts.entries[0].to
+    if (exists) {
+      req.url = '/index.html'
+      return staticHandler(req, res)
+    } else {
+      module.exports.<span class="apidocCodeKeywordSpan">generateIndex</span>(firstEntry, req, res)
+    }
+  })
+}
+
+opts.entries.forEach(function (entry) {
+  router.addRoute('/' + entry.to, function (req, res, params) {
+    module.exports.browserify(entry.from, opts, req, res)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.wzrd.http" id="apidoc.element.wzrd.http">
+        function <span class="apidocSignatureSpan">wzrd.</span>http
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">http = function (opts) {
+  var handler = module.exports.static(opts)
+  return http.createServer(handler)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.wzrd.https" id="apidoc.element.wzrd.https">
+        function <span class="apidocSignatureSpan">wzrd.</span>https
+        <span class="apidocSignatureSpan">(opts, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">https = function (opts, cb) {
+  var handler = module.exports.static(opts)
+  pem.createCertificate({days: 999, selfSigned: true}, function (err, keys) {
+    if (err) return cb(err)
+    var server = https.createServer({key: keys.serviceKey, cert: keys.certificate}, handler)
+    cb(null, server)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.wzrd.static" id="apidoc.element.wzrd.static">
+        function <span class="apidocSignatureSpan">wzrd.</span>static
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">static = function (opts) {
+  var basedir = opts.path || process.cwd()
+  var staticHandler = ecstatic(basedir)
+  var router = Router()
+
+  var indexHtmlHandler = function (req, res, params) {
+    fs.exists(path.join(basedir, 'index.html'), function (exists) {
+      var firstEntry = opts.entries[0].to
+      if (exists) {
+        req.url = '/index.html'
+        return staticHandler(req, res)
+      } else {
+        module.exports.generateIndex(firstEntry, req, res)
+      }
+    })
+  }
+
+  opts.entries.forEach(function (entry) {
+    router.addRoute('/' + entry.to, function (req, res, params) {
+      module.exports.browserify(entry.from, opts, req, res)
+    })
+  })
+
+  router.addRoute('/', indexHtmlHandler)
+
+  router.addRoute('*', function (req, res, params) {
+    console.log(JSON.stringify({url: req.url, type: 'static', time: new Date()}))
+    staticHandler(req, res, function () {
+      if (opts.pushstate) return indexHtmlHandler(req, res)
+      res.end('File not found. :(')
+    })
+  })
+
+  return router
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var https = require('https')
+var fs = require('fs')
+var path = require('path')
+var spawn = require('npm-execspawn')
+var pem = require('pem')
+
+module.exports.http = function (opts) {
+var handler = module.exports.<span class="apidocCodeKeywordSpan">static</span>(opts)
+return http.createServer(handler)
+}
+
+module.exports.https = function (opts, cb) {
+var handler = module.exports.static(opts)
+pem.createCertificate({days: 999, selfSigned: true}, function (err, keys) {
+  if (err) return cb(err)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>

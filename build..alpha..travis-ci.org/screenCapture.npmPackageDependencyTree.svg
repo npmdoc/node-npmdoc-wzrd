@@ -1,0 +1,61 @@
+<svg height="926" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="926" fill="#555" width="720"></rect>
+<text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
+<tspan x="10" y="26">5 megabytes installed</tspan>
+<tspan x="10" y="42"></tspan>
+<tspan x="10" y="58">node_modules</tspan>
+<tspan x="10" y="74">└─┬ wzrd@1.5.0 </tspan>
+<tspan x="10" y="90">  ├─┬ concat-stream@1.6.0 </tspan>
+<tspan x="10" y="106">  │ ├── inherits@2.0.3 </tspan>
+<tspan x="10" y="122">  │ ├─┬ readable-stream@2.2.8 </tspan>
+<tspan x="10" y="138">  │ │ ├── buffer-shims@1.0.0 </tspan>
+<tspan x="10" y="154">  │ │ ├── core-util-is@1.0.2 </tspan>
+<tspan x="10" y="170">  │ │ ├── isarray@1.0.0 </tspan>
+<tspan x="10" y="186">  │ │ ├── process-nextick-args@1.0.7 </tspan>
+<tspan x="10" y="202">  │ │ ├── string_decoder@1.0.0 </tspan>
+<tspan x="10" y="218">  │ │ └── util-deprecate@1.0.2 </tspan>
+<tspan x="10" y="234">  │ └── typedarray@0.0.6 </tspan>
+<tspan x="10" y="250">  ├─┬ ecstatic@1.4.1 </tspan>
+<tspan x="10" y="266">  │ ├── he@0.5.0 </tspan>
+<tspan x="10" y="282">  │ ├── mime@1.3.4 </tspan>
+<tspan x="10" y="298">  │ └── url-join@1.1.0 </tspan>
+<tspan x="10" y="314">  ├── minimist@1.2.0 </tspan>
+<tspan x="10" y="330">  ├─┬ npm-execspawn@1.3.0 </tspan>
+<tspan x="10" y="346">  │ ├─┬ debug@2.6.3 </tspan>
+<tspan x="10" y="362">  │ │ └── ms@0.7.2 </tspan>
+<tspan x="10" y="378">  │ ├─┬ execspawn@1.0.1 </tspan>
+<tspan x="10" y="394">  │ │ └── util-extend@1.0.3 </tspan>
+<tspan x="10" y="410">  │ ├─┬ shell-quote@1.6.1 </tspan>
+<tspan x="10" y="426">  │ │ ├── array-filter@0.0.1 </tspan>
+<tspan x="10" y="442">  │ │ ├── array-map@0.0.0 </tspan>
+<tspan x="10" y="458">  │ │ ├── array-reduce@0.0.0 </tspan>
+<tspan x="10" y="474">  │ │ └── jsonify@0.0.0 </tspan>
+<tspan x="10" y="490">  │ └── xtend@3.0.0 </tspan>
+<tspan x="10" y="506">  ├─┬ pem@1.9.4 </tspan>
+<tspan x="10" y="522">  │ ├── os-tmpdir@1.0.2 </tspan>
+<tspan x="10" y="538">  │ └─┬ which@1.2.14 </tspan>
+<tspan x="10" y="554">  │   └── isexe@2.0.0 </tspan>
+<tspan x="10" y="570">  ├─┬ portfinder@0.4.0 </tspan>
+<tspan x="10" y="586">  │ ├── async@0.9.0 </tspan>
+<tspan x="10" y="602">  │ └─┬ mkdirp@0.5.1 </tspan>
+<tspan x="10" y="618">  │   └── minimist@0.0.8 </tspan>
+<tspan x="10" y="634">  └─┬ routes-router@4.3.0 </tspan>
+<tspan x="10" y="650">    ├─┬ error@3.0.0 </tspan>
+<tspan x="10" y="666">    │ ├── string-template@0.1.3 </tspan>
+<tspan x="10" y="682">    │ └── xtend@2.1.2 </tspan>
+<tspan x="10" y="698">    ├─┬ hammock@0.1.10 </tspan>
+<tspan x="10" y="714">    │ ├── cookies@0.3.8 </tspan>
+<tspan x="10" y="730">    │ └── lodash@2.4.2 </tspan>
+<tspan x="10" y="746">    ├─┬ http-methods@1.1.0 </tspan>
+<tspan x="10" y="762">    │ ├── body@0.1.0 </tspan>
+<tspan x="10" y="778">    │ └─┬ content-types@0.1.0 </tspan>
+<tspan x="10" y="794">    │   └─┬ iterators@0.1.0 </tspan>
+<tspan x="10" y="810">    │     └── ap@0.1.0 </tspan>
+<tspan x="10" y="826">    ├── httperr@0.5.0 </tspan>
+<tspan x="10" y="842">    ├── routes@2.1.0 </tspan>
+<tspan x="10" y="858">    ├─┬ send-data@3.3.4 </tspan>
+<tspan x="10" y="874">    │ └── json-stringify-safe@5.0.1 </tspan>
+<tspan x="10" y="890">    └─┬ xtend@2.1.2 </tspan>
+<tspan x="10" y="906">      └── object-keys@0.4.0</tspan>
+</text>
+</svg>
