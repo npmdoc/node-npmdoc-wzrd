@@ -7,7 +7,7 @@
 <tspan x="10" y="74">└─┬ wzrd@1.5.0 </tspan>
 <tspan x="10" y="90">  ├─┬ concat-stream@1.6.0 </tspan>
 <tspan x="10" y="106">  │ ├── inherits@2.0.3 </tspan>
-<tspan x="10" y="122">  │ ├─┬ readable-stream@2.2.8 </tspan>
+<tspan x="10" y="122">  │ ├─┬ readable-stream@2.2.9 </tspan>
 <tspan x="10" y="138">  │ │ ├── buffer-shims@1.0.0 </tspan>
 <tspan x="10" y="154">  │ │ ├── core-util-is@1.0.2 </tspan>
 <tspan x="10" y="170">  │ │ ├── isarray@1.0.0 </tspan>
