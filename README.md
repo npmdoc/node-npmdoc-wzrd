@@ -1,6 +1,6 @@
 # npmdoc-wzrd
 
-#### api documentation for  [wzrd (v1.5.0)](https://github.com/maxogden/wzrd)  [![npm package](https://img.shields.io/npm/v/npmdoc-wzrd.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-wzrd) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-wzrd.svg)](https://travis-ci.org/npmdoc/node-npmdoc-wzrd)
+#### basic api documentation for  [wzrd (v1.5.0)](https://github.com/maxogden/wzrd)  [![npm package](https://img.shields.io/npm/v/npmdoc-wzrd.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-wzrd) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-wzrd.svg)](https://travis-ci.org/npmdoc/node-npmdoc-wzrd)
 
 #### Super minimal browserify development server. Inspired by [beefy](http://npmjs.org/beefy) but with less magic
 
