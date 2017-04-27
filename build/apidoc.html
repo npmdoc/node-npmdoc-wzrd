@@ -210,7 +210,23 @@ opts.entries.forEach(function (entry) {
   var handler = module.exports.static(opts)
   return http.createServer(handler)
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (err) {
+      console.error(&#x27;error generating certificate&#x27;, err)
+      process.exit(1)
+    }
+    server.listen(port, listening)
+  })
+} else {
+  wzrd.<span class="apidocCodeKeywordSpan">http</span>(argv).listen(port, listening)
+}
+
+function listening (err) {
+  if (err) {
+    console.error(&#x27;error starting server&#x27;, err)
+    process.exit(1)
+  }
+...</pre></li>
     </ul>
 
 
@@ -230,7 +246,23 @@ opts.entries.forEach(function (entry) {
     cb(null, server)
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+portfinder.getPort(function (err, port) {
+if (err) {
+  console.error(&#x27;error finding port&#x27;, err)
+  process.exit(1)
+}
+
+if (argv.https) {
+  wzrd.<span class="apidocCodeKeywordSpan">https</span>(argv, function (err, server) {
+    if (err) {
+      console.error(&#x27;error generating certificate&#x27;, err)
+      process.exit(1)
+    }
+    server.listen(port, listening)
+  })
+} else {
+...</pre></li>
     </ul>
 
 
